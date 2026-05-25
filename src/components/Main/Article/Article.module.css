@@ -1,0 +1,11 @@
+.article {
+  background-color: blue;
+  padding: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+  color: white;
+}
+
+.article h1, .article h2, .article p {
+  color: white;
+}

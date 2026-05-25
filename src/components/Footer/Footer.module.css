@@ -1,0 +1,13 @@
+.footer {
+  height: 6vh;
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+}

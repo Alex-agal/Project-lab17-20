@@ -1,0 +1,36 @@
+.aside {
+  background-color: darkturquoise;
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tagCloud h3 {
+  margin-bottom: 0.8rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.banner {
+  background: rgba(0,0,0,0.1);
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.banner a {
+  color: black;
+}
