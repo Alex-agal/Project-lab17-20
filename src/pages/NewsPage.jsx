@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const NewsPage = () => {
   // Список фото (имена файлов в папке public)
-  const photos = ['/don.jpeg', '/don2.png'];
+  const photos = ['/Rostov-1.jpg','/Rostov.jpg','/don.jpeg', '/don2.png'];
   
   // Состояние для хранения индекса текущего фото
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,8 +54,8 @@ const NewsPage = () => {
           alt={`Фото ${currentIndex + 1}`} 
           style={{
             width: '100%',
-            maxWidth: '500px',
-            height: '300px',
+            maxWidth: '600px',
+            height: '400px',
             objectFit: 'cover',
             borderRadius: '16px',
             boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
@@ -80,7 +80,7 @@ const NewsPage = () => {
         </button>
       </div>
 
-      {/* Индикатор (показывает, какое фото сейчас: 1 из 2) */}
+      {/* Индикатор (показывает, какое фото сейчас: 1 из 4) */}
       <p style={{ textAlign: 'center', marginTop: '15px' }}>
         {currentIndex + 1} из {photos.length}
       </p>
