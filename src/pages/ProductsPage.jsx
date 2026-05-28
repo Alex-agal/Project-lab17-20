@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ProductsPage = () => {
+  const { language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // ВАШИ ФОТО (9 штук)
   const photos = [
     'Rostov.jpg',
     'food2.jpg',
@@ -22,93 +26,55 @@ const ProductsPage = () => {
     setCurrentIndex((currentIndex - 1 + photos.length) % photos.length);
   };
 
+  const tableData = {
+    ru: {
+      headers: ['Услуга', 'Описание', 'Цена, руб'],
+      rows: [
+        ['🎧 Аудиогид', 'Прогулка по центру с аудиорассказом', '500'],
+        ['👩‍🏫 Индивидуальная экскурсия', '3 часа, гид', '2500'],
+        ['🗺️ Карта мест', 'PDF-путеводитель с маршрутами', '300']
+      ]
+    },
+    en: {
+      headers: ['Service', 'Description', 'Price, RUB'],
+      rows: [
+        ['🎧 Audio guide', 'Walk in the center with audio', '500'],
+        ['👩‍🏫 Private tour', '3 hours with guide', '2500'],
+        ['🗺️ Map of places', 'PDF guide with routes', '300']
+      ]
+    }
+  };
+
+  const data = tableData[language];
+
   return (
     <div>
-      <h2>Продукты и услуги</h2>
+      <h2>{language === 'ru' ? 'Продукты и услуги' : 'Products & Services'}</h2>
 
-      {/* КАРУСЕЛЬ ФОТО */}
-      <div style={{
-        marginBottom: '30px',
-        padding: '20px',
-        backgroundColor: 'rgba(255,255,255,0.1)',
-        borderRadius: '16px'
-      }}>
-        <h3 style={{ textAlign: 'center', marginBottom: '15px' }}>📸 Наши экскурсии</h3>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '15px'
-        }}>
-          <button onClick={prevPhoto} style={{
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            color: 'white',
-            border: 'none',
-            fontSize: '30px',
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            cursor: 'pointer'
-          }}>❮</button>
-
-          <img
-            src={photos[currentIndex]}
-            alt={`Фото ${currentIndex + 1}`}
-            style={{
-              width: '100%',
-              maxWidth: '450px',
-              height: '350px',
-              objectFit: 'cover',
-              borderRadius: '16px',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
-            }}
-          />
-
-          <button onClick={nextPhoto} style={{
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            color: 'white',
-            border: 'none',
-            fontSize: '30px',
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            cursor: 'pointer'
-          }}>❯</button>
+      {/* Карусель */}
+      <div style={{ marginBottom: '30px', padding: '20px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '16px' }}>
+        <h3 style={{ textAlign: 'center', marginBottom: '15px' }}>{language === 'ru' ? '📸 Наши экскурсии' : '📸 Our tours'}</h3>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
+          <button onClick={prevPhoto} style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', border: 'none', fontSize: '30px', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer' }}>❮</button>
+          <img src={photos[currentIndex]} alt="Tour" style={{ width: '100%', maxWidth: '400px', height: '250px', objectFit: 'cover', borderRadius: '16px' }} />
+          <button onClick={nextPhoto} style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', border: 'none', fontSize: '30px', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer' }}>❯</button>
         </div>
-        <p style={{ textAlign: 'center', marginTop: '10px' }}>
-          {currentIndex + 1} / {photos.length}
-        </p>
+        <p style={{ textAlign: 'center', marginTop: '10px' }}>{currentIndex + 1} / {photos.length}</p>
       </div>
-      <table style={{
-        width: '100%',
-        borderCollapse: 'collapse',
-        backgroundColor: 'white',
-        color: 'black',
-        marginTop: '20px'
-      }}>
+
+      {/* Таблица */}
+      <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: 'white', color: 'black' }}>
         <thead>
           <tr style={{ backgroundColor: '#ddd' }}>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Услуга</th>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Описание</th>
-            <th style={{ border: '1px solid black', padding: '8px' }}>Цена, руб</th>
+            {data.headers.map(h => <th key={h} style={{ border: '1px solid black', padding: '8px' }}>{h}</th>)}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style={{ border: '1px solid black', padding: '8px' }}>🎧 Аудиогид</td>
-            <td style={{ border: '1px solid black', padding: '8px' }}>Прогулка по центру с аудиорассказом</td>
-            <td style={{ border: '1px solid black', padding: '8px' }}>500</td>
-          </tr>
-          <tr>
-            <td style={{ border: '1px solid black', padding: '8px' }}>👩‍🏫 Индивидуальная экскурсия</td>
-            <td style={{ border: '1px solid black', padding: '8px' }}>3 часа, гид</td>
-            <td style={{ border: '1px solid black', padding: '8px' }}>2500</td>
-          </tr>
-          <tr>
-            <td style={{ border: '1px solid black', padding: '8px' }}>🗺️ Карта мест</td>
-            <td style={{ border: '1px solid black', padding: '8px' }}>PDF-путеводитель с маршрутами</td>
-            <td style={{ border: '1px solid black', padding: '8px' }}>300</td>
-          </tr>
+          {data.rows.map((row, idx) => (
+            <tr key={idx}>
+              {row.map(cell => <td key={cell} style={{ border: '1px solid black', padding: '8px' }}>{cell}</td>)}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

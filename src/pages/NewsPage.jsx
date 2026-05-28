@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-
+import { useLanguage } from '../contexts/LanguageContext';
 const NewsPage = () => {
-  const photos = ['/Rostov-1.jpg','/Rostov.jpg','/don.jpeg', '/don2.png'];
+  const { language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const photos = ['/Rostov-1.jpg','/Rostov.jpg','/don.jpeg', '/don2.png'];
   const nextPhoto = () => {
     setCurrentIndex((currentIndex + 1) % photos.length);
   };
@@ -13,8 +15,8 @@ const NewsPage = () => {
   return (
     <div>
       {/* Обязательный текст по ТЗ */}
-      <h1>Отличная новость.</h1>
-      <p>Уже тепло!</p>
+      <h1>{language === 'ru' ? 'Отличная новость.' : 'Great news.'}</h1>
+      <p>{language === 'ru' ? 'Уже тепло!' : 'It\'s already warm!'}</p>
 
       {/* КАРУСЕЛЬ */}
       <div style={{ 
@@ -76,7 +78,9 @@ const NewsPage = () => {
         {currentIndex + 1} из {photos.length}
       </p>
       <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '14px' }}>
-        🚢 На Дону открылась навигация! Приглашаем на прогулки на теплоходе.
+      {language === 'ru' 
+          ? '🚢 На Дону открылась навигация! Приглашаем на прогулки на теплоходе.'
+          : '🚢 Navigation on the Don River has opened! Join us for boat rides.'}
       </p>
     </div>
   );
