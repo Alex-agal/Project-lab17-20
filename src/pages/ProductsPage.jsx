@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 const ProductsPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Ваши фото (лежат в папке public)
   const photos = [
     'Rostov.jpg',
     'food2.jpg',
@@ -81,8 +79,6 @@ const ProductsPage = () => {
           {currentIndex + 1} / {photos.length}
         </p>
       </div>
-
-      {/* ТАБЛИЦА (обязательная по ТЗ) */}
       <table style={{
         width: '100%',
         borderCollapse: 'collapse',

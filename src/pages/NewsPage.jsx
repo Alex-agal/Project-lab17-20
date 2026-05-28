@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 
 const NewsPage = () => {
-  // Список фото (имена файлов в папке public)
   const photos = ['/Rostov-1.jpg','/Rostov.jpg','/don.jpeg', '/don2.png'];
-  
-  // Состояние для хранения индекса текущего фото
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Функция для следующего фото
   const nextPhoto = () => {
     setCurrentIndex((currentIndex + 1) % photos.length);
   };
-
-  // Функция для предыдущего фото
   const prevPhoto = () => {
     setCurrentIndex((currentIndex - 1 + photos.length) % photos.length);
   };
@@ -79,13 +72,9 @@ const NewsPage = () => {
           ❯
         </button>
       </div>
-
-      {/* Индикатор (показывает, какое фото сейчас: 1 из 4) */}
       <p style={{ textAlign: 'center', marginTop: '15px' }}>
         {currentIndex + 1} из {photos.length}
       </p>
-
-      {/* Дополнительный текст */}
       <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '14px' }}>
         🚢 На Дону открылась навигация! Приглашаем на прогулки на теплоходе.
       </p>
