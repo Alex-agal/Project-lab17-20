@@ -1,6 +1,6 @@
 .main {
   height: 89vh;
-  background-color: #ccc; /* фон на случай просветов */
+  background-color: #ccc;
 }
 
 .gridContainer {
@@ -9,4 +9,17 @@
   height: 100%;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+/* ========== АДАПТИВ ДЛЯ ПЛАНШЕТОВ И ТЕЛЕФОНОВ ========== */
+@media (max-width: 800px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  
+  .main {
+    height: auto;
+    min-height: 70vh;
+  }
 }
