@@ -5,6 +5,7 @@ import NewsPage from '../../../pages/NewsPage';
 import AboutPage from '../../../pages/AboutPage';
 import ContactsPage from '../../../pages/ContactsPage';
 import ProductsPage from '../../../pages/ProductsPage';
+import NotFoundPage from '../../../pages/NotFoundPage';
 
 const Article = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ const Article = () => {
       case '/products':
         return <ProductsPage />;
       default:
-        return <NewsPage />; // по умолчанию /news
+        return <NotFoundPage />; // по умолчанию /news
     }
   };
 
