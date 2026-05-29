@@ -20,7 +20,7 @@ const Aside = () => {
       </div>
       <div className={styles.banner}>
         <p>🎟️ {language === 'ru' ? 'Скачайте наш путеводитель' : 'Download our guide'}</p>
-        <a href="/price-list.txt" download>{language === 'ru' ? 'Скачать PDF' : 'Download PDF'}</a>
+        <a href="/Тестовый файл для лабораторной работы».pdf" download>{language === 'ru' ? 'Скачать PDF' : 'Download PDF'}</a>
       </div>
     </aside>
   );
